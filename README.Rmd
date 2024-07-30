@@ -236,7 +236,7 @@ Ok. Now we're going to run the models in a Bayesian framework. This doesn't use 
 
 First the simpler model:
 
-```{r}
+```{r, eval = F}
 library(brms)
 
 fit_negexpB <- brm(
@@ -261,13 +261,13 @@ summary(fit_negexpB)
 
 And let's plot the fit:
 
-```{r}
+```{r, eval = F}
 plot(conditional_effects(fit_negexpB), points = TRUE)
 ```
 
 Lastly, and this is different for Bayes, we can look at the distributions of the posterior estimates.
 
-```{r}
+```{r, eval = F}
 plot(fit_negexpB, ask = F)
 ```
 
@@ -281,7 +281,7 @@ Note that most models are too complex or too highly dimensional to calculate the
 
 Now let's do the same for the full model.
 
-```{r}
+```{r, eval = F}
 fit_negexpBS <- brm(
   formula = bf(NDVI ~ alpha + gamma * (1 - exp(-(age/lambda))) + A*sin(2*3.141593*age + (phi + 3.141593/6*(3 - 1))),
                alpha ~ 1, gamma ~ 1, lambda ~ 1, A ~ 1, phi ~ 1,
@@ -306,13 +306,13 @@ summary(fit_negexpBS)
 
 And let's plot the fit:
 
-```{r}
+```{r, eval = F}
 plot(conditional_effects(fit_negexpBS), points = TRUE)
 ```
 
 And look at the distributions of the posterior estimates.
 
-```{r}
+```{r, eval = F}
 plot(fit_negexpBS, ask = F)
 ```
 
